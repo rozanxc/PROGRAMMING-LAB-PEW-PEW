@@ -15,9 +15,9 @@ public static class InputManager
     public static void Init(Player p)
     {
         _ctrls = new();
-        
+
         cam = Camera.main;
-        
+
         _ctrls.Permenanet.Enable();
 
         _ctrls.InGame.Shoot.performed += _ =>
@@ -28,10 +28,13 @@ public static class InputManager
         {
             _mousePos = ctx.ReadValue<Vector2>();
         };
+
     }
 
     public static void EnableInGame()
     {
         _ctrls.InGame.Enable();
     }
+
+
 }

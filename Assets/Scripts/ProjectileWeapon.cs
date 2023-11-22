@@ -12,9 +12,9 @@ public class ProjectileWeapon : WeaponBase
     {
         Debug.Log("Attack method called. Percent: " + percent); //DEBUGGING
         print("My weapon attacked: " + percent);
-        
+
         Ray camRay = InputManager.GetCameraRay();
-        Rigidbody rb = Instantiate(percent>0.5f?myBullet2:myBullet, camRay.origin, transform.rotation);
+        Rigidbody rb = Instantiate(percent > 0.5f ? myBullet2 : myBullet, camRay.origin, transform.rotation);
         rb.AddForce(Mathf.Max(percent, 0.1f) * force * camRay.direction, ForceMode.Impulse);
     }
 }

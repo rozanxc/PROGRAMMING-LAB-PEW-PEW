@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     {
         print("I shot: " + InputManager.GetCameraRay());
         weaponShootToggle = !weaponShootToggle;
-        if(weaponShootToggle) myWeapon.StartShooting();
+        if (weaponShootToggle) myWeapon.StartShooting();
         else myWeapon.StopShooting();
     }
 }
