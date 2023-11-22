@@ -3,17 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
-
 public abstract class WeaponBase : MonoBehaviour
 {
 
     [Header("Weapon Base Stats")]
-    [SerializeField]
-    protected float timeBetweenAttacks;
+    [SerializeField] protected float timeBetweenAttacks;
     [SerializeField] protected float chargeUpTime;
     [SerializeField, Range(0, 1)] protected float minChargePercent;
-
     [SerializeField] private bool isFullyAuto;
+
+
+
+
+    //NEW
+    public float GetTimeBetweenAttacks()
+    {
+        return timeBetweenAttacks;
+    }
+    
+    public float GetChargeUpTime()
+    {
+        return chargeUpTime;
+    }
+    
+    public float GetMinChargePercent() 
+    {
+        return minChargePercent;
+    }
+    
+    public bool GetIsFullyAuto()
+    {
+        return isFullyAuto;
+    }
+
+    //NEW
 
     private Coroutine _currentFireTimer;
     private bool _isOnCooldown;

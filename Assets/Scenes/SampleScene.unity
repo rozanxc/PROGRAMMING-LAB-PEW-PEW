@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 1225930445}
   - {fileID: 236725150}
+  - {fileID: 1225930445}
   uiManager: {fileID: 1946110949}
 --- !u!1 &1225930444
 GameObject:
@@ -590,8 +590,8 @@ MonoBehaviour:
   myBullet: {fileID: 8358803163130354280, guid: 42185d46583c2cd44bb879ef2c8d2373, type: 3}
   myBullet2: {fileID: 9207008315952407925, guid: 0c466e631c0de5845be24e03fb0a014c, type: 3}
   force: 100
-  recoilStrength: 5
   gunshotAudioSource: {fileID: 2042653563}
+  recoilStrength: 10
 --- !u!4 &1225930446
 Transform:
   m_ObjectHideFlags: 0
