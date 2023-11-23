@@ -34,6 +34,7 @@ public class ProjectileWeapon : WeaponBase
         ApplyRecoilForce(rb, percent);
 
         rb.AddForce(Mathf.Max(percent, 0.1f) * force * camRay.direction, ForceMode.Impulse);
+        
     }
 
     private void ApplyRecoilForce(Rigidbody rb, float percent)

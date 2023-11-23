@@ -4,51 +4,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum EWeaponType
+{
+    BurstFire,
+    Projectile
+}
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private UIManager uiManager;
 
     private int currentWeaponIndex = 0;
-    
-    
-    
+    private EWeaponType currentWeaponType = EWeaponType.Projectile;
+
     private bool weaponShootToggle;
 
     private void Start()
     {
         InputManager.Init(this);
         InputManager.EnableInGame();
-        uiManager.SetWeapon(weapons[currentWeaponIndex]);
+        uiManager.SetWeapon(weapons[currentWeaponIndex], currentWeaponType);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CycleWeapon(-1);
+            ChangeWeaponType(EWeaponType.BurstFire);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            CycleWeapon(1);
+            ChangeWeaponType(EWeaponType.Projectile);
         }
     }
 
-    private void CycleWeapon(int direction)
+    private void ChangeWeaponType(EWeaponType newWeaponType)
     {
+        currentWeaponType = newWeaponType;
         weapons[currentWeaponIndex].StopShooting();
-        currentWeaponIndex += direction;
 
-        if (currentWeaponIndex < 0)
+        switch (currentWeaponType)
         {
-            currentWeaponIndex = weapons.Length - 1;
-        }
-        else if (currentWeaponIndex >= weapons.Length)
-        {
-            currentWeaponIndex = 0;
+            case EWeaponType.BurstFire:
+                currentWeaponIndex = 0;
+                break;
+            case EWeaponType.Projectile:
+                currentWeaponIndex = 1;
+                break;
+                // No need for a case for the removed third option
         }
 
-        uiManager.SetWeapon(weapons[currentWeaponIndex]);
+        uiManager.SetWeapon(weapons[currentWeaponIndex], currentWeaponType);
     }
 
     public void Shoot()
@@ -61,5 +68,4 @@ public class Player : MonoBehaviour
         else
             weapons[currentWeaponIndex].StopShooting();
     }
-
 }

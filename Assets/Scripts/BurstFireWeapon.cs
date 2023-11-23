@@ -11,10 +11,10 @@ public class
     [SerializeField] private Rigidbody myBullet; //reference the prefab for the projectile
     [SerializeField] private float force; // Define the force variable for the BurstFireWeapon
 
-    [SerializeField] private float recoilStrength = 2.0f;
-
-
+ 
     [SerializeField] private AudioSource gunshotAudioSource;
+
+    [SerializeField] private float recoilStrength = 2.0f;
 
     public int BurstCount => burstCount; //FOR UI
 

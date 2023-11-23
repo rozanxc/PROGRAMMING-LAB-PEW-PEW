@@ -6,18 +6,18 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text weaponStatsText;
     [SerializeField] private WeaponBase currentWeapon;
-
-
+    [SerializeField] private EWeaponType currentWeaponType;
 
     private void Start()
     {
         // Set the initial weapon
-        SetWeapon(currentWeapon);
+        SetWeapon(currentWeapon, currentWeaponType);
     }
 
-    public void SetWeapon(WeaponBase weapon)
+    public void SetWeapon(WeaponBase weapon, EWeaponType weaponType)
     {
         currentWeapon = weapon;
+        currentWeaponType = weaponType;
         UpdateWeaponStats();
     }
 
@@ -29,8 +29,8 @@ public class UIManager : MonoBehaviour
                                $"Time Between Attacks: {currentWeapon.GetTimeBetweenAttacks()}\n" +
                                $"Charge Up Time: {currentWeapon.GetChargeUpTime()}\n" +
                                $"Min Charge Percent: {currentWeapon.GetMinChargePercent()}\n" +
-                               $"Is Fully Auto: {currentWeapon.GetIsFullyAuto()}";
-
+                               $"Is Fully Auto: {currentWeapon.GetIsFullyAuto()}\n" +
+                               $"Weapon Type: {currentWeaponType}";
 
             if (currentWeapon is BurstFireWeapon burstWeapon)
             {
@@ -40,7 +40,4 @@ public class UIManager : MonoBehaviour
             weaponStatsText.text = statsText;
         }
     }
-
-
-
 }
